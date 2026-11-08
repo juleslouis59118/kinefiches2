@@ -1,72 +1,63 @@
-# KinéFiches — Jules Louis
+# KinéFiches — version 2 (8 novembre 2026)
 
-Application personnelle de prescription d’exercices, conçue pour iPad et Windows.
-Pas d’abonnement, pas de compte dans l’application, pas de service distant obligatoire.
-Les exercices et le programme restent stockés localement sur chaque appareil.
+Application gratuite de prescription d'exercices pour iPad et Windows, utilisable hors connexion après installation.
 
-## Contenu de cette version (v1)
+## Ce qui a changé
 
-- Six exercices illustrés, avec leurs étapes distinctes (pour le curl puis développé, les deux premières positions figurent sur une même image, conformément à la demande).
-- Sélection d’exercices pour une fiche patient.
-- Paramètres indépendants : séries, répétitions ou durée, charge, pause, RIR, fréquence et consigne spécifique.
-- Informations générales du patient et édition d’une fiche au format A4, sur une ou plusieurs pages.
-- Bibliothèque modifiable : ajouter, renommer, supprimer des exercices et importer plusieurs images par exercice, les légender et les réordonner.
-- Sauvegarde et restauration manuelles au format JSON **avec les images incorporées**.
-- Application installable hors ligne, une fois déployée sur un site HTTPS et chargée au moins une fois avec Internet.
+- Nouvelle interface épurée, médicale, avec touches bleu ciel (`#77B5FE`) et typographie proche d'Aptos.
+- Le RIR est **vide par défaut** chaque fois que tu ajoutes un exercice.
+- Tu peux ajouter plusieurs fois le même exercice à une fiche (réglages indépendants).
+- Nouvel onglet **Mes programmes** : enregistrer, utiliser, mettre à jour, renommer ou supprimer des programmes types.
+- Champ **Recommandation générale** pour la fiche entière.
+- Champ **Commentaire** indépendant sous chaque exercice.
+- Sur le PDF : seuls les paramètres effectivement renseignés sont visibles. Un RIR ou un repos vide ne crée **aucune colonne**.
+- PDF : trois zones par exercice (illustrations, nom + consignes complètes, paramètres, commentaire éventuel). Aucun nom d'application, date, heure ou mention du praticien ailleurs qu'en pied de page : « Exercices prescrits par Jules Louis ».
+- Sauvegardes JSON comprenant désormais les programmes préenregistrés, la fiche en cours, la bibliothèque et toutes les images.
+- Compatibilité avec les sauvegardes de la version 1.
 
-## Installer gratuitement sur iPad et Windows
+## IMPORTANT : avant de mettre à jour le site
 
-### 1. Publier les fichiers sur GitHub Pages
+Si tu as déjà créé des exercices ou des programmes dans l'ancienne application, ouvre d'abord la version 1 et réalise **Sauvegardes → Exporter ma bibliothèque**. Conserve le fichier `.json`.
 
-1. Crée gratuitement un compte sur https://github.com/ si tu n’en as pas.
-2. Crée un **nouveau dépôt public** appelé, par exemple, `kinefiches` (le dépôt doit être public pour l’option gratuite la plus simple).
-3. Décompresse le ZIP de l’application. Dans le dépôt, utilise **Add file → Upload files** et dépose les **fichiers décompressés et le dossier `assets`**, pas le ZIP lui-même. Le fichier `index.html` doit être **à la racine** du dépôt, et les images dans `assets/`.
-4. Valide l’ajout des fichiers avec « Commit changes ».
-5. Dans **Settings → Pages**, sélectionne **Deploy from a branch**, branche `main`, dossier `/(root)`, puis **Save**.
-6. GitHub Pages affiche ensuite l’adresse de ton application sous la forme `https://TON_IDENTIFIANT.github.io/kinefiches/` (utilise l’adresse affichée par GitHub, pas une adresse devinée).
+Les données de l'application sont conservées localement dans le navigateur ou l'appareil (IndexedDB), pas dans les fichiers GitHub. L'application version 2 conserve le même nom de base locale, et reprend normalement ces données en place. L'export préalable sert de sécurité.
 
-**Important :** le code et les images d’origine du dépôt public sont visibles par tous. En revanche, les informations saisies dans ton application ne sont pas envoyées à GitHub : elles restent dans le stockage de ton navigateur ou de l’application installée. N’ajoute jamais de dossiers patients, noms ou autres données de santé dans le dépôt.
+## Mettre à jour la version déjà publiée sur GitHub Pages
 
-### 2. Sur l’iPad
+1. Décompresse le ZIP de cette version 2 sur Windows (clic droit → **Extraire tout**).
+2. Ouvre ton dépôt GitHub `kinefiches` (le même qu'avant, il n'est pas nécessaire d'en créer un autre).
+3. Depuis l'onglet **Code**, clique **Add file** (= Ajouter un fichier), puis **Upload files** (= Importer des fichiers).
+4. Dépose les fichiers **décompressés** et le dossier `assets`. Le fichier `index.html` doit se trouver directement à la racine du dépôt. Le dossier `assets` doit rester un dossier contenant les images et icônes.
+5. Valide via **Commit changes** (= Enregistrer les modifications). Les fichiers portant le même nom doivent remplacer les anciens. Si GitHub te demande de confirmer un remplacement, confirme.
+6. Retourne sur le même site GitHub Pages que la version 1. **Ne change pas** les réglages de `Settings → Pages`.
+7. Actualise une fois la page, puis une seconde fois si l'ancienne version apparaît (le cache hors ligne doit se mettre à jour). Si le site reste ancien, ferme le navigateur, rouvre-le et recharge la page. Sur iPad, relance aussi l'application installée.
 
-1. Ouvre l’adresse HTTPS de l’application dans **Safari**, avec Internet.
-2. Touche **Partager → Sur l’écran d’accueil → Ajouter**.
-3. Ouvre KinéFiches depuis sa nouvelle icône pendant que tu es encore connecté. Lorsque le cache est installé, l’application peut fonctionner hors ligne.
-4. Pour récupérer un PDF : **Créer la fiche PDF → Imprimer**, puis utilise l’aperçu d’impression et l’option **Partager / Enregistrer dans Fichiers** disponible sur ton iPad. Selon la version d’iPadOS, un agrandissement de l’aperçu d’impression peut faire apparaître le PDF à partager.
+Tu peux vérifier la version 2 à la présence de l'onglet **Mes programmes**.
 
-### 3. Sur Windows
+## Utilisation
 
-1. Ouvre la même adresse HTTPS dans **Chrome ou Edge**.
-2. Utilise **Installer cette application / Installer ce site comme application** dans le navigateur.
-3. Ouvre KinéFiches une première fois en ligne, puis réessaie sans connexion.
-4. Pour le PDF : **Créer la fiche PDF → Imprimer → Destination : Enregistrer au format PDF**.
+- **Prescription** → « + Ajouter » autant de fois que nécessaire. Complète les champs. Le RIR et le repos vides n'apparaîtront pas sur le PDF.
+- **Recommandation générale** → texte affiché au début du PDF seulement s'il est renseigné.
+- **Commentaire** de chaque exercice → texte affiché sous son tableau seulement s'il est renseigné.
+- **Créer le PDF** → dans la boîte d'impression, choisis l'enregistrement en PDF (sous Windows : destination « Enregistrer au format PDF » ; sur iPad : impression puis partage/enregistrement dans Fichiers).
+- **Enregistrer ce programme** → choisis un nom générique sans nom de patient. Dans **Mes programmes**, « Utiliser » restaure les exercices de ce modèle dans une fiche modifiable.
+- **Bibliothèque** → « + Nouvel exercice » pour ajouter une consigne et tes propres photos, sans reprogrammer l'application.
+- **Sauvegardes** → « Exporter mes données » pour transférer manuellement un `.json` entre Windows et iPad.
 
-## Utiliser l’application
+## Bonnes pratiques
 
-1. Dans **Prescription**, clique sur « + Ajouter » en face des exercices souhaités.
-2. Ajuste les paramètres pour chaque exercice ; l’écran n’enregistre pas le nom du patient dans les sauvegardes.
-3. Clique sur **Créer le PDF**. Les feuilles A4 se répartissent automatiquement selon le nombre d’exercices et d’images.
-4. Dans **Bibliothèque**, crée tes propres exercices : donne un nom, des consignes, des images par étape et des paramètres habituels.
+- N'ajoute **jamais** de noms de patients, de bilans, de fichiers patients ou d'informations de santé personnelles dans ton dépôt GitHub public. Toutes les images et le code mis sur GitHub sont publics.
+- N'enregistre pas de données patients identifiantes dans les commentaires, les programmes enregistrés, ou le fichier JSON non chiffré.
+- Les données locales peuvent être perdues si le stockage du navigateur est effacé ou si l'application est supprimée : réalise régulièrement une sauvegarde JSON externe.
+- Pour utiliser hors ligne, ouvre l'application **une première fois avec Internet sur chaque appareil**, puis installe-la comme application ; vérifie hors ligne.
+- La génération PDF utilise l'impression native du navigateur ; elle fonctionne hors connexion.
 
-Les valeurs par défaut (3 séries de 10 répétitions, pause 60 secondes, RIR 2) sont **des valeurs d’exemple modifiables** et non des recommandations cliniques individuelles.
+## Fichiers
 
-## Transférer entre iPad et Windows
+- `index.html` : interface et onglets.
+- `styles.css` : design et styles de la fiche PDF A4.
+- `app.js` : logique de l'application (bibliothèque, exercices, programmes, PDF, sauvegardes).
+- `service-worker.js` : mise en cache hors ligne, version 2.
+- `manifest.webmanifest` : installation comme application.
+- `assets/` : illustrations des exercices et icônes.
 
-- Dans **Sauvegardes**, choisis **Exporter ma bibliothèque** : un fichier `KineFiches_sauvegarde_DATE.json` est téléchargé, y compris toutes les images.
-- Transfère ce fichier avec une clé USB, AirDrop, câble, ou via les fichiers de ton choix.
-- Sur l’autre appareil, ouvre **Sauvegardes → Importer une sauvegarde**, puis sélectionne le JSON.
-- **Attention :** l’import remplace la bibliothèque et le programme actuels de cet appareil. Fais un export avant chaque import si tu ne veux rien perdre.
-
-## Conservation et confidentialité
-
-- L’application est gratuite et fonctionne sans API, publicité, analyse d’utilisation ni compte.
-- Aucun serveur de données n’est utilisé par l’application ; les photos ajoutées, consignes et programmes restent localement sur l’appareil jusqu’à un export volontaire.
-- Les données locales ne sont **pas chiffrées**. Les fichiers de sauvegarde JSON ne sont pas non plus chiffrés ; protège-les et évite d’y saisir des informations de santé identifiantes.
-- Supprimer l’application, effacer le stockage d’un navigateur, ou changer d’appareil peut entraîner une perte de données. Fais des sauvegardes périodiques.
-- Chaque appareil conserve ses propres données. La synchronisation est volontairement manuelle.
-
-## Conserver ou modifier l’application
-
-Garde l’archive ZIP en lieu sûr : elle contient **tous les fichiers** nécessaires pour reproduire et modifier cette version. Tu peux ajouter des exercices **sans retoucher au code**. Pour les évolutions du logiciel lui-même, les fichiers `index.html`, `styles.css`, `app.js` et `service-worker.js` peuvent être édités et republiés.
-
-L’hébergement gratuit dépend des conditions du fournisseur, qui peuvent changer, mais l’application et son code ne requièrent aucun abonnement. Le fonctionnement hors ligne suppose une installation initiale sur une page HTTPS et un cache valide.
+Aucun abonnement, aucun serveur et aucune bibliothèque JavaScript distante ne sont nécessaires à l'application. L'hébergement gratuit de GitHub Pages reste soumis aux conditions de GitHub.

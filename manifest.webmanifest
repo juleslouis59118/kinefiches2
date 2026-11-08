@@ -1,15 +1,25 @@
 {
-  "name": "KinéFiches · Jules Louis",
+  "name": "KinéFiches — Prescription d’exercices",
   "short_name": "KinéFiches",
-  "description": "Prescriptions d'exercices de kinésithérapie illustrées et hors ligne",
+  "description": "Bibliothèque d’exercices, programmes enregistrés et fiches PDF hors ligne",
   "lang": "fr",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f4f6f3",
-  "theme_color": "#126c65",
+  "background_color": "#f6f9fc",
+  "theme_color": "#77b5fe",
   "icons": [
-    {"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"./assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
