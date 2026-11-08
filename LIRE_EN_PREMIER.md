@@ -43,3 +43,12 @@ Ouvre d’abord le site dans Safari avec Internet, puis utilise Partager → Sur
 ## Fichiers
 
 - `index.html` — interface ; `styles.css` — apparence ; `app.js` — bibliothèque, fiches et sauvegardes ; `pdf-export.js` — génération PDF autonome ; `service-worker.js` — cache hors ligne ; `manifest.webmanifest` — installation ; `assets/` — illustrations et icônes.
+
+
+## Mise à jour vers la version 5
+1. Dans l’application actuelle, exportez vos données dans Sauvegardes.
+2. Remplacez les fichiers du site GitHub Pages par le contenu de ce dossier (avec assets), à la même adresse.
+3. Ouvrez le site en ligne pour charger la mise à jour, puis fermez et rouvrez l’application. Si nécessaire, actualisez une seconde fois.
+4. Vos données restent dans le stockage du même site. Ne supprimez pas les données du navigateur. Vérifiez les nouvelles recherches puis le fonctionnement hors ligne.
+
+Dans Mes programmes, Aperçu ouvre les pages de la fiche et Télécharger le PDF exporte directement le programme enregistré. Ces actions ne changent pas la fiche en cours.
