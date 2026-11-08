@@ -52,3 +52,9 @@ Ouvre d’abord le site dans Safari avec Internet, puis utilise Partager → Sur
 4. Vos données restent dans le stockage du même site. Ne supprimez pas les données du navigateur. Vérifiez les nouvelles recherches puis le fonctionnement hors ligne.
 
 Dans Mes programmes, Aperçu ouvre les pages de la fiche et Télécharger le PDF exporte directement le programme enregistré. Ces actions ne changent pas la fiche en cours.
+
+
+## Version 6 : partager un programme
+Dans Prescription ou Mes programmes, appuie sur « Partager le PDF ». Choisis une application et le destinataire, puis valide toi-même l’envoi. Si la préparation est longue, un bouton « Ouvrir le partage » peut apparaître. Si ton navigateur ne permet pas le partage, utilise « Télécharger le PDF ».
+
+Mise à jour : exporte une sauvegarde JSON, puis remplace les fichiers du site par le contenu de ce dossier (index.html au même emplacement, pas dans un sous-dossier supplémentaire). Garde la même adresse. Ouvre l’application en ligne, ferme-la puis rouvre-la pour charger la mise à jour.
