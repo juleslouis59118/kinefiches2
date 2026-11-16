@@ -13,3 +13,6 @@
 .preview-pages{overflow:auto;padding:16px;background:#e9eef3;min-height:120px}
 .preview-pages figure{margin:0 auto 18px;max-width:794px}.preview-pages canvas{display:block;width:100%;height:auto;background:white;box-shadow:0 2px 10px #0002}.preview-pages figcaption{margin-bottom:8px;color:var(--muted)}
 #library-search-count,#template-search-count{margin:0 0 14px}
+
+/* v7: prescription first, touch-friendly ordering */
+[hidden]{display:none!important}.program-controls .icon-button{min-width:44px;min-height:44px}.program-controls button:disabled{opacity:.35;cursor:default}.selected{min-width:0}.template-header{flex-wrap:wrap}#editing-name{color:#286a9f;font-weight:650}.selected-actions{flex-wrap:wrap}.selected-actions .btn{white-space:normal}.program-head{flex-wrap:wrap}

@@ -19,26 +19,32 @@ function stages(c,photos,x,y,w,h){if(!photos.length)return;
  else {const ih=(h-gap*(photos.length-1))/photos.length;photos.forEach((p,i)=>imgContain(c,p,x,y+i*(ih+gap),w,ih));}
 }
 function tableValues(p){p=p||{};let arr=[];if(nonempty(p.sets))arr.push(['Séries',s(p.sets)]);
- if(p.mode==='duration'){if(nonempty(p.duration))arr.push(['Durée',s(p.duration)+' s']);}
+ if(p.mode==='duration'){if(nonempty(p.duration))arr.push(['Durée',s(p.duration)]);}
  else if(nonempty(p.reps))arr.push(['Répétitions',s(p.reps)]);
- if(nonempty(p.rest))arr.push(['Repos',s(p.rest)+' sec']);
+ if(nonempty(p.rest))arr.push(['Repos',s(p.rest)]);
  if(nonempty(p.rir))arr.push(['RIR',s(p.rir)]);
  if(nonempty(p.load))arr.push(['Charge',s(p.load)]);return arr;
 }
-function table(c,values,x,y,w){if(!values.length)return y;const lh=6.9,vh=7.8,h=lh+vh;
- const needs=values.map(([label,value])=>{font(c,'label');const a=c.measureText(label).width;font(c,'value');return Math.max(a,c.measureText(value).width)+5.5;});const sum=needs.reduce((a,b)=>a+b,0),alloc=needs.map(a=>a*w/sum);
- c.lineWidth=.18;c.strokeStyle=LINE;rounded(c,x,y,w,h,1.7);c.stroke();c.beginPath();c.moveTo(x,y+lh);c.lineTo(x+w,y+lh);c.stroke();
- let px=x;values.forEach(([label,value],i)=>{const cw=alloc[i],mid=px+cw/2;if(i){c.beginPath();c.moveTo(px,y);c.lineTo(px,y+h);c.stroke();}
-  font(c,'label');c.textAlign='center';c.fillText(label,mid,y+1.2);font(c,'value');let fs=styles.value[0];while(fs>2.13&&c.measureText(value).width>cw-1.5){fs-=.13;c.font=`400 ${fs}px ${FONT}`;}c.fillText(value,mid,y+lh+1.6);c.textAlign='left';px+=cw;});return y+h;
+function tableLayout(c,values,w){
+ if(!values.length)return {height:0,lines:[],width:0};
+ const width=w/values.length,lines=values.map(v=>wrap(c,v[1],width-3,'value'));
+ return {width,lines,height:6.9+3.2+Math.max(...lines.map(l=>l.length))*styles.value[2]};
+}
+function table(c,values,x,y,w){
+ if(!values.length)return y;
+ const layout=tableLayout(c,values,w),h=layout.height;
+ c.lineWidth=.18;c.strokeStyle=LINE;rounded(c,x,y,w,h,1.7);c.stroke();c.beginPath();c.moveTo(x,y+6.9);c.lineTo(x+w,y+6.9);c.stroke();
+ values.forEach(([label],i)=>{const px=x+i*layout.width;if(i){c.beginPath();c.moveTo(px,y);c.lineTo(px,y+h);c.stroke();}font(c,'label');c.textAlign='center';c.fillText(label,px+layout.width/2,y+1.2);drawLines(c,layout.lines[i],px+1.5,y+8.5,'value');});return y+h;
 }
 const CARD_H=72.7,GAP=4.1,PAD=3.1,IMG_W=54,IMG_X=M+PAD,DIV=IMG_X+IMG_W+2.6,TX=DIV+4.2,TW=W-M-PAD-TX;
-function height(b){return Math.max(CARD_H,PAD*2+b.t.length*5.02+2.1+b.i.length*4.1+(b.p.length?18.9:0)+(b.n.length?3.5+b.n.length*4:0));}
+function height(b){return Math.max(CARD_H,PAD*2+b.t.length*5.02+2.1+b.i.length*4.1+(b.p.length?4.2+b.ph:0)+(b.n.length?3.5+b.n.length*4:0));}
 function paint(c,b,y){const h=height(b);c.strokeStyle=LINE;c.lineWidth=.24;rounded(c,M,y,CW,h,3);c.stroke();c.strokeStyle=LIGHT;c.lineWidth=.18;c.beginPath();c.moveTo(DIV,y+PAD);c.lineTo(DIV,y+h-PAD);c.stroke();stages(c,b.images,IMG_X,y+PAD,IMG_W,h-2*PAD);
  let q=drawLines(c,b.t,TX,y+PAD,'title')+2.1;q=drawLines(c,b.i,TX,q,'body');if(b.p.length){q+=4.2;q=table(c,b.p,TX,q,TW);}if(b.n.length){q+=3.5;q=drawLines(c,b.n,TX,q,'note');}if(q>y+h-PAD+.4)throw Error('Mise en page du texte trop chargée.');return h;}
 function footer(c){c.strokeStyle=LINE;c.lineWidth=.20;c.beginPath();c.moveTo(M,FOOT);c.lineTo(W-M,FOOT);c.stroke();c.save();c.font=`italic 3.35px ${FONT}`;c.fillStyle=MUTED;c.textBaseline='top';c.textAlign='right';c.fillText('Exercices prescrits par Jules Louis',W-M,FOOT+3);c.restore();}
 function blocks(c,ex,item,images){const inst=wrap(c,ex.instructions||'',TW,'body'),note=nonempty(item.notes)?wrap(c,'Commentaire : '+s(item.notes),TW,'note'):[],params=tableValues(item.params);const result=[];let at=0;
  do{const chunk=inst.slice(at,at+23);at+=chunk.length;const last=at>=inst.length,first=result.length===0;
  const b={t:wrap(c,ex.name+(first?'':' (suite)'),TW,'title'),i:chunk,p:last?params:[],n:last?note:[],images:first?images.slice(0,2):[]};
+ b.ph=tableLayout(c,b.p,TW).height;
  if(height(b)>246&&b.n.length){const all=b.n;b.n=all.slice(0,12);result.push(b);for(let j=12;j<all.length;j+=24)result.push({t:wrap(c,ex.name+' (commentaire, suite)',TW,'title'),i:[],p:[],n:all.slice(j,j+24),images:[]});}
  else result.push(b);
  }while(at<inst.length);
