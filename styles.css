@@ -16,3 +16,6 @@
 
 /* v7: prescription first, touch-friendly ordering */
 [hidden]{display:none!important}.program-controls .icon-button{min-width:44px;min-height:44px}.program-controls button:disabled{opacity:.35;cursor:default}.selected{min-width:0}.template-header{flex-wrap:wrap}#editing-name{color:#286a9f;font-weight:650}.selected-actions{flex-wrap:wrap}.selected-actions .btn{white-space:normal}.program-head{flex-wrap:wrap}
+
+/* v8: centered free-text prescription parameters */
+#program-list input[data-param]{text-align:center;}

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kinefiches-v7-20261116';
+const CACHE_NAME = 'kinefiches-v8-20261117';
 const APP_SHELL = [
   './', './index.html', './styles.css', './pdf-export.js', './app.js', './manifest.webmanifest',
   './assets/icon.svg','./assets/icon-192.png','./assets/icon-512.png','./assets/icon-apple.png',

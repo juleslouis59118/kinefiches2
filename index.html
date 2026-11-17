@@ -20,7 +20,7 @@
    <button type="button" class="nav-btn" data-nav="backup"><span aria-hidden="true">⇄</span> Sauvegardes</button>
    <button type="button" class="nav-btn" data-nav="help"><span aria-hidden="true">ⓘ</span> Aide</button>
   </nav>
-  <div class="sidebar-bottom"><span class="status-dot" id="status-dot"></span><span id="connection-status">Vérification…</span><p>Version 7 · Stockage sur cet appareil · sans abonnement</p></div>
+  <div class="sidebar-bottom"><span class="status-dot" id="status-dot"></span><span id="connection-status">Vérification…</span><p>Version 8 · Stockage sur cet appareil · sans abonnement</p></div>
  </aside>
  <div class="workarea">
   <header class="topbar"><div class="mobile-brand"><span class="brand-logo tiny">+</span><strong>KinéFiches</strong></div><span id="topbar-title">Prescription d’exercices</span><div class="topbar-right"><span id="save-status" aria-live="polite">Prêt</span><button class="btn btn-primary btn-small only-prescription" type="button" data-action="print">Télécharger le PDF</button></div></header>
@@ -29,7 +29,7 @@
     <div class="page-title"><div class="kicker">PRESCRIPTION</div><div class="heading-line"><div><h1>Créer une fiche d’exercices</h1><p>Choisis les exercices et renseigne uniquement les paramètres utiles.</p></div><button class="btn btn-quiet" type="button" data-action="clear-program">Vider la fiche</button></div></div>
 
     <div class="prescription-columns"><section class="selected">
-    <div class="general-panel panel"><label for="general-note"><span class="field-title">Recommandation générale <small>— facultatif</small></span></label><textarea id="general-note" rows="2" maxlength="2000" placeholder="Recommandations communes à tous les exercices…"></textarea><p class="field-help">Cette rubrique apparaîtra en haut du PDF uniquement si tu écris quelque chose.</p></div>
+    <div class="general-panel panel"><label for="general-note"><span class="field-title">Recommandation générale <small>— facultatif</small></span></label><textarea id="general-note" rows="2" maxlength="2000"></textarea><p class="field-help">Cette rubrique apparaîtra en haut du PDF uniquement si tu écris quelque chose.</p></div>
       <div class="section-header"><div><h2>Fiche en cours</h2><p id="editing-name" role="status"></p><p>Texte libre : 3–4, 8 / jambe, 30 s, sans charge… Utilise ↑ et ↓ pour changer l’ordre.</p></div><span class="count emphasis" id="program-count">0 exercice</span></div>
       <div id="program-list" class="program-list"></div>
       <div class="selected-actions"><button id="save-changes" hidden class="btn btn-primary" type="button" data-action="save-changes">Enregistrer les modifications</button><button class="btn btn-outline" type="button" data-action="save-model">Enregistrer comme modèle</button><button class="btn btn-primary" type="button" data-action="print">Télécharger le PDF</button><button class="btn btn-outline" type="button" data-action="share-pdf">Partager le PDF</button><button class="btn btn-outline" type="button" id="save-copy" data-action="save-template">Enregistrer ce programme</button><p class="field-help">Le PDF se télécharge directement, sans date, heure ni titre ajouté par le navigateur.</p></div>
