@@ -23,6 +23,7 @@ function tableValues(p){p=p||{};let arr=[];if(nonempty(p.sets))arr.push(['Série
  else if(nonempty(p.reps))arr.push(['Répétitions',s(p.reps)]);
  if(nonempty(p.rest))arr.push(['Repos',s(p.rest)]);
  if(nonempty(p.rir))arr.push(['RIR',s(p.rir)]);
+ if(nonempty(p.rpe))arr.push(['RPE (0–10)',s(p.rpe)]);
  if(nonempty(p.load))arr.push(['Charge',s(p.load)]);return arr;
 }
 function tableLayout(c,values,w){
